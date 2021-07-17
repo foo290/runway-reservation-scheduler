@@ -102,7 +102,7 @@ namespace bst {
             return rootNode;
         }
 
-    public:
+    protected:
 
         explicit BST(float interval) {
             kMin = interval;
@@ -126,20 +126,8 @@ namespace bst {
             return afterDelete;
         }
 
-        bool getDeleteCounter() const {
-            return deleted;
-        }
-
-        void resetDeleteCounter() {
-            deleted = false;
-        }
-
         bool kMinCheck(float lastTime, float arrivalTime) const {
             return kMin < fabsf(lastTime - arrivalTime);
-        }
-
-        Node *getRoot() {
-            return root;
         }
 
         bool insertData(float data) {
@@ -149,6 +137,20 @@ namespace bst {
                 return true;
             }
             return false;
+        }
+
+        bool getDeleteCounter() const {
+            return deleted;
+        }
+
+        void resetDeleteCounter() {
+            deleted = false;
+        }
+
+    public:
+
+        Node *getRoot() {
+            return root;
         }
 
         void printLevelOrder(Node* rootNode){
@@ -204,6 +206,10 @@ private:
 
 public:
     explicit ReservationScheduler(float interval) : bst::BST(interval) {}
+    ~ReservationScheduler(){
+        cout<<"Program exits gracefully!"<<endl;
+    }
+
 
     bool requestLanding(float arrivalTime) {
         if (insertData(arrivalTime)) {
