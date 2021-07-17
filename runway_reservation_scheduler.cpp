@@ -8,7 +8,7 @@ namespace bst {
     class Node {
     public:
         float data;
-        float subtreeSize;
+        int subtreeSize;
         Node *left;
         Node *right;
         Node *parent;
@@ -301,3 +301,4 @@ int main() {
         }
     }
 }
+
